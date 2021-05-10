@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
+import ReactDOMServer from "react-dom/server";
 import { useParameter } from "@storybook/api";
 import { PARAM_KEY } from "./constants";
 import { TabContent } from "./components/TabContent";
 
-export const Tab = ({ active }) => {
-  // https://storybook.js.org/docs/react/addons/addons-api#useparameter
-  const paramData = useParameter(PARAM_KEY, []);
+function process(str) {
+  const div = document.createElement("div");
+  console.log(str);
+  div.innerHTML = str.trim();
+  return format(div, 0).innerHTML.trim();
+}
 
-  return active ? <TabContent code={paramData} /> : null;
+export const Tab = ({ active, channel }) => {
+  const [code, setCode] = useState("");
+  // console.log(channel);
+  channel.on("storybook/my-addon/add_source", (eventData) => {
+    setCode(eventData);
+  });
+
+  return active ? <TabContent code={code} /> : null;
 };
