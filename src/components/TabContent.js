@@ -17,9 +17,13 @@ const TabInner = styled.div(({ theme }) => ({
 }));
 
 export const TabContent = ({ code }) => {
-  // console.log(ReactDOMServer.renderToString(code));
+  console.log(code);
+  // const NewEl = React.createElement(code.type);
   return (
     <TabWrapper>
+      {/* <code.type {...code.props} {...props}>
+        {children}
+      </code.type> */}
       <TabInner>
         <Title>Testing</Title>
         <p>
