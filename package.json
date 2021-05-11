@@ -29,7 +29,8 @@
     "start": "concurrently \"npm run storybook -- --no-manager-cache --quiet\" \"npm run build -- --watch\"",
     "build-storybook": "build-storybook",
     "prerelease": "node check-metadata.js",
-    "release": "npm run build && auto shipit"
+    "release": "npm run build && auto shipit",
+    "deploy-storybook": "storybook-to-ghpages"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.1",
@@ -38,6 +39,7 @@
     "@babel/preset-react": "^7.12.5",
     "@babel/preset-typescript": "^7.13.0",
     "@storybook/react": "^6.1.14",
+    "@storybook/storybook-deployer": "^2.8.7",
     "auto": "^10.3.0",
     "babel-loader": "^8.1.0",
     "chalk": "^2.4.2",
